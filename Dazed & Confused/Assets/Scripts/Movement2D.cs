@@ -14,8 +14,22 @@ public class Movement2D : MonoBehaviour {
 	public float speed;
 	public Boundary boundary;
 
+	public GameObject bullet;
+	public Transform bulletSpawn;
+	public float fireRate;
+
+	private float nextFire;
+
 	void Start () {
 		rigidbody2d = GetComponent<Rigidbody2D> ();
+	}
+
+	void Update()
+	{
+		if (Input.GetButton ("Fire1") && Time.time > nextFire) {
+			nextFire = Time.time + fireRate;
+			Instantiate (bullet, bulletSpawn.position, bulletSpawn.rotation);
+		}
 	}
 
 	void FixedUpdate () {
