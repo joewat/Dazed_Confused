@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{FB101FCA-C8B8-CD13-733A-944AB46BAE51}") = "Dazed & Confused", "Assembly-CSharp.csproj", "{B374129C-05DB-EB7E-12C4-487F8061E130}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B374129C-05DB-EB7E-12C4-487F8061E130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B374129C-05DB-EB7E-12C4-487F8061E130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B374129C-05DB-EB7E-12C4-487F8061E130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B374129C-05DB-EB7E-12C4-487F8061E130}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
