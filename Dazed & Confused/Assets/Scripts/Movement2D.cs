@@ -20,8 +20,16 @@ public class Movement2D : MonoBehaviour {
 
 	private float nextFire;
 
-	void Start () {
+    public GameObject melee;
+    public bool active;
+    public float activeTime;
+
+    private float activeEnd;
+
+    void Start () {
 		rigidbody2d = GetComponent<Rigidbody2D> ();
+        melee = GameObject.Find("Melee");
+        melee.SetActive(false);
 	}
 
 	void Update()
@@ -30,7 +38,20 @@ public class Movement2D : MonoBehaviour {
 			nextFire = Time.time + fireRate;
 			Instantiate (bullet, bulletSpawn.position, bulletSpawn.rotation);
 		}
-	}
+
+        if (Input.GetButton("Fire2") && Time.time > activeTime)
+        {
+            melee.SetActive(true);
+            active = true;
+            activeEnd = Time.time + activeTime;
+        }
+
+        if (Time.time > activeEnd)
+        {
+            melee.SetActive(false);
+            active = false;
+        }
+    }
 
 	void FixedUpdate () {
 		float moveHorizontal = Input.GetAxis ("Horizontal");

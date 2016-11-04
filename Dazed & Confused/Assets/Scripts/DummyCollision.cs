@@ -8,20 +8,32 @@ public class DummyCollision : MonoBehaviour
 
     private float stunEnd;
 
+    public Boundary boundary;
+    private Rigidbody2D rigidbody2d;
+
     void Start() {
         stun = false;
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.name == "Bullet(Clone)")
+        foreach (ContactPoint2D c in coll.contacts)
         {
-            Destroy(coll.gameObject);
-            if (!stun)
+            if (c.collider.name == "Bullet(Clone)")
             {
-                stun = true;
-                stunEnd = Time.time + stunTime;
-            };
+                Destroy(coll.gameObject);
+                if (!stun)
+                {
+                    stun = true;
+                    stunEnd = Time.time + stunTime;
+                };
+            }
+
+            if (c.collider.name == "Melee")
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
@@ -30,5 +42,13 @@ public class DummyCollision : MonoBehaviour
         {
             stun = false;
         }
+    }
+
+    void FixedUpdate()
+    {
+        rigidbody2d.position = new Vector2 ( 
+            Mathf.Clamp(rigidbody2d.position.x, boundary.xMin, boundary.xMax),
+            Mathf.Clamp(rigidbody2d.position.y, boundary.yMin, boundary.yMax)
+        );
     }
 }

@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Aim.cs" />
      <Compile Include="Assets\Scripts\DummyCollision.cs" />
+     <Compile Include="Assets\Scripts\Melee.cs" />
      <Compile Include="Assets\Scripts\Movement2D.cs" />
      <Compile Include="Assets\Scripts\Shoot.cs" />
  <Reference Include="UnityEngine.UI">
