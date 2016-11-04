@@ -26,6 +26,8 @@ public class Movement2D : MonoBehaviour {
 
     private float activeEnd;
 
+    public float dashSpeed;
+
     void Start () {
 		rigidbody2d = GetComponent<Rigidbody2D> ();
         melee = GameObject.Find("Melee");
@@ -50,6 +52,11 @@ public class Movement2D : MonoBehaviour {
         {
             melee.SetActive(false);
             active = false;
+        }
+
+        if (Input.GetButton("Fire3"))
+        {
+            rigidbody2d.AddForce(rigidbody2d.velocity * dashSpeed);
         }
     }
 
