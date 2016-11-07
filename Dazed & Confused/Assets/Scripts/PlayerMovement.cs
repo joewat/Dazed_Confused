@@ -39,7 +39,6 @@ public class PlayerMovement : MonoBehaviour
 					stun = true;
 					stunEnd = Time.time + stunTime;
 				}
-				;
 			}
 
 			// If collided with melee, then destroy.
@@ -57,12 +56,14 @@ public class PlayerMovement : MonoBehaviour
 			stun = false;
 		}
 
-		// Movement stuff.
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
+		// Movement stuff (only if not stunned!)
+		if (!stun) {
+			float moveHorizontal = Input.GetAxis ("Horizontal");
+			float moveVertical = Input.GetAxis ("Vertical");
 
-		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
-		rigidbody2d.velocity = movement * speed;
+			Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
+			rigidbody2d.velocity = movement * speed;
+		}
 
 //		rigidbody2d.position = new Vector2 (
 //			Mathf.Clamp (rigidbody2d.position.x, boundary.xMin, boundary.xMax),
