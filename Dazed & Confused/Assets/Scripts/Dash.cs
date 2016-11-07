@@ -4,21 +4,41 @@ using System.Collections;
 public class Dash : MonoBehaviour
 {
 
-	private Rigidbody2D rigidbody2d;
+    private Rigidbody2D rigidbody2d;
 
-	public float dashSpeed;
+    public bool dash;
+    public float dashSpeed;
+    public float dashTime;
+    public float cooldown;
 
-	void Start ()
-	{
-		// Initialize variables.
-		rigidbody2d = GetComponent<Rigidbody2D> ();
-	}
+    private float dashEnd;
+    private float nextDash;
 
-	void Update ()
-	{
-		// Dash on button press.
-		if (Input.GetButton ("Fire3")) {
-			rigidbody2d.AddForce (rigidbody2d.velocity * dashSpeed);
-		}
-	}
+    void Start()
+    {
+        // Initialize variables.
+        rigidbody2d = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        // Dash assignment and cooldown.
+        if (Input.GetButton("Fire3") && Time.time > nextDash)
+        {
+            dash = true;
+            dashEnd = Time.time + dashTime;
+            nextDash = Time.time + cooldown;
+        }
+
+        // Dashing state.
+        if (dash == true) {
+            rigidbody2d.AddForce(rigidbody2d.velocity * dashSpeed);
+        }
+
+        // Set dash to inactive after certain amount of time.
+        if (Time.time > dashEnd)
+        {
+            dash = false;
+        }        
+    }
 }
