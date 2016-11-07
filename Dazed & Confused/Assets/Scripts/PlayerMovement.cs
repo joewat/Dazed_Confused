@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 			}
 
 			// If collided with melee, then destroy.
-			if (c.collider.name == "Melee") {
+			if (c.collider.name == "Melee" && stun == true) {
 				Destroy (this.gameObject);
 			}
 		}
