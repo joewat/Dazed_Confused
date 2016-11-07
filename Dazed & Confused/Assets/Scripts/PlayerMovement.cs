@@ -64,9 +64,9 @@ public class PlayerMovement : MonoBehaviour
 		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 		rigidbody2d.velocity = movement * speed;
 
-		rigidbody2d.position = new Vector2 (
-			Mathf.Clamp (rigidbody2d.position.x, boundary.xMin, boundary.xMax),
-			Mathf.Clamp (rigidbody2d.position.y, boundary.yMin, boundary.yMax)
-		);
+//		rigidbody2d.position = new Vector2 (
+//			Mathf.Clamp (rigidbody2d.position.x, boundary.xMin, boundary.xMax),
+//			Mathf.Clamp (rigidbody2d.position.y, boundary.yMin, boundary.yMax)
+//		);
 	}
 }
