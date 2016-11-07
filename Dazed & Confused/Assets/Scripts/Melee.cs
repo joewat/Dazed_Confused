@@ -6,8 +6,10 @@ public class Melee : MonoBehaviour {
 	public GameObject melee;
 	public bool active;
 	public float activeTime;
+    public float cooldown;
 
 	private float activeEnd;
+    private float nextActive;
 
 	void Start () {
 		// Set melee object to inactive.
@@ -17,15 +19,19 @@ public class Melee : MonoBehaviour {
 	void Update() {
 
 		// Activate melee on button press.
-		if (Input.GetButton ("Fire2") && Time.time > activeTime) {
-			melee.SetActive (true);
+		if (Input.GetButton ("Fire2") && Time.time > nextActive) {
 			active = true;
 			activeEnd = Time.time + activeTime;
+            nextActive = Time.time + cooldown;
 		}
 
-		// Set melee object to inactive after certain amount of time.
-		if (Time.time > activeEnd)
-		{
+        // Melee cooldown.
+        if (active == true) {
+            melee.SetActive(true);
+        }
+        
+        // Set melee object to inactive after certain amount of time.
+		if (Time.time > activeEnd) {
 			melee.SetActive(false);
 			active = false;
 		}
