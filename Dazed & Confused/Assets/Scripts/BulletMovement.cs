@@ -19,10 +19,11 @@ public class BulletMovement : MonoBehaviour
 
 	void Update ()
 	{
-//		// Destroy bullet if OOB.
-//		if (rigidbody2d.position.x < boundary.xMin || rigidbody2d.position.x > boundary.xMax ||
-//		          rigidbody2d.position.y < boundary.yMin || rigidbody2d.position.y > boundary.yMax) {
-//			Destroy (this.gameObject);
-//		}
+		// Destroy bullet if OOB.
+		if (rigidbody2d.position.x < boundary.xMin || rigidbody2d.position.x > boundary.xMax ||
+		          rigidbody2d.position.y < boundary.yMin || rigidbody2d.position.y > boundary.yMax) {
+			Destroy (this.gameObject);
+		}
 	}
+
 }
