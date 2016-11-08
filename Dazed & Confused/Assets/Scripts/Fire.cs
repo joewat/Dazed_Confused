@@ -7,13 +7,14 @@ public class Fire : MonoBehaviour
 	public GameObject bullet;
 	public Transform bulletSpawn;
 	public float fireRate;
+    public int playerID;
 
-	private float nextFire;
+    private float nextFire;
 
 	void Update ()
 	{
 		// Fire on button press.
-		if (Input.GetButton ("Fire1") && Time.time > nextFire) {
+		if (Input.GetButton ("Shoot" + playerID) && Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
 			Instantiate (bullet, bulletSpawn.position, bulletSpawn.rotation);
 		}

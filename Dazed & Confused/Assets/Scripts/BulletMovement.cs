@@ -7,8 +7,9 @@ public class BulletMovement : MonoBehaviour
 	private Rigidbody2D rigidbody2d;
 
 	public float speed;
+    public int playerID;
 
-	public Boundary boundary;
+    public Boundary boundary;
 
 	void Start ()
 	{

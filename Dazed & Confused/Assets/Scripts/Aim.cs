@@ -12,12 +12,13 @@ public class Aim : MonoBehaviour
 	float sensitivityY;
 	public float angH;
 	public float angV;
+    public int playerID;
 
 
-	void Update ()
+    void Update ()
 	{
-		angH = Input.GetAxis ("RightH") * -1;
-		angV = Input.GetAxis ("RightV") * -1;
+		angH = Input.GetAxis ("RightH" + playerID) * -1;
+		angV = Input.GetAxis ("RightV1" + playerID) * -1;
 		if (angH != 0 || angV != 0) {
 			target.eulerAngles = new Vector3 (0, 0, ((Mathf.Atan2 (angH, angV) * (180 / Mathf.PI))));
 		}

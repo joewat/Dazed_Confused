@@ -10,6 +10,7 @@ public class Dash : MonoBehaviour
     public float dashSpeed;
     public float dashTime;
     public float cooldown;
+    public int playerID;
 
     private float dashEnd;
     private float nextDash;
@@ -23,7 +24,7 @@ public class Dash : MonoBehaviour
     void Update()
     {
         // Dash assignment and cooldown.
-        if (Input.GetButton("Fire3") && Time.time > nextDash)
+        if (Input.GetButton("Dash" + playerID) && Time.time > nextDash)
         {
             dash = true;
             dashEnd = Time.time + dashTime;

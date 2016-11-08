@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public float speed;
 	public Boundary boundary;
+    public int playerID;
 
 	public bool stun;
 	public float stunTime;
@@ -42,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
 			}
 
 			// If collided with melee, then destroy.
-			if (c.collider.name == "Melee" && stun == true) {
+			if (c.collider.name == "Melee1" && stun == true) {
 				Destroy (this.gameObject);
 			}
 		}
@@ -58,11 +59,13 @@ public class PlayerMovement : MonoBehaviour
 
 		// Movement stuff (only if not stunned!)
 		if (!stun) {
-			float moveHorizontal = Input.GetAxis ("Horizontal");
-			float moveVertical = Input.GetAxis ("Vertical");
+                float moveHorizontal = Input.GetAxis("Horizontal" + playerID);
+                float moveVertical = Input.GetAxis("Vertical"+playerID);
 
-			Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
-			rigidbody2d.velocity = movement * speed;
+
+                Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+                rigidbody2d.velocity = movement * speed;
+            
 		}
 
 		rigidbody2d.position = new Vector2 (

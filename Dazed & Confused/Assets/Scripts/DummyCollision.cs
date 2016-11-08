@@ -7,8 +7,8 @@ public class DummyCollision : MonoBehaviour
 	public float stunTime;
 
 	private float stunEnd;
-
-	public Boundary boundary;
+    public int playerID;
+    public Boundary boundary;
 	private Rigidbody2D rigidbody2d;
 
 	void Start ()
@@ -29,7 +29,7 @@ public class DummyCollision : MonoBehaviour
 				;
 			}
 
-			if (c.collider.name == "Melee") {
+			if (c.collider.name == "Melee" + playerID) {
 				Destroy (this.gameObject);
 			}
 		}

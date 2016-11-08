@@ -7,8 +7,9 @@ public class Melee : MonoBehaviour {
 	public bool active;
 	public float activeTime;
     public float cooldown;
+    public int playerID;
 
-	private float activeEnd;
+    private float activeEnd;
     private float nextActive;
 
 	void Start () {
@@ -19,7 +20,7 @@ public class Melee : MonoBehaviour {
 	void Update() {
 
 		// Activate melee on button press.
-		if (Input.GetButton ("Fire2") && Time.time > nextActive) {
+		if (Input.GetButton ("Melee"+playerID) && Time.time > nextActive) {
 			active = true;
 			activeEnd = Time.time + activeTime;
             nextActive = Time.time + cooldown;
