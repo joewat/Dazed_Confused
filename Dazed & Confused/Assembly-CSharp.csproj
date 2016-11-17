@@ -48,9 +48,9 @@
      <Compile Include="Assets\Scripts\Aim.cs" />
      <Compile Include="Assets\Scripts\BulletMovement.cs" />
      <Compile Include="Assets\Scripts\Dash.cs" />
-     <Compile Include="Assets\Scripts\DummyCollision.cs" />
      <Compile Include="Assets\Scripts\Fire.cs" />
      <Compile Include="Assets\Scripts\Melee.cs" />
+     <Compile Include="Assets\Scripts\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\WallCollision.cs" />
  <Reference Include="UnityEngine.UI">

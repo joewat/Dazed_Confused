@@ -1,20 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public class Boundary
-{
-	public float xMin, xMax, yMin, yMax;
-}
-
 public class PlayerMovement : MonoBehaviour
 {
 	
 	private Rigidbody2D rigidbody2d;
 
 	public float speed;
-	public Boundary boundary;
-    public int playerID;
 
 	public bool stun;
 	public float stunTime;
@@ -51,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update ()
 	{
+		print ("hello");
+		print (this.GetComponent<PlayerControls> ().rightH);
 
 		// Unstun after certain amount of time.
 		if (Time.time > stunEnd) {
@@ -59,18 +53,10 @@ public class PlayerMovement : MonoBehaviour
 
 		// Movement stuff (only if not stunned!)
 		if (!stun) {
-                float moveHorizontal = Input.GetAxis("Horizontal" + playerID);
-                float moveVertical = Input.GetAxis("Vertical"+playerID);
-
-
-                Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-                rigidbody2d.velocity = movement * speed;
-            
+			float moveHorizontal = Input.GetAxis (this.GetComponent<PlayerControls> ().leftH);
+			float moveVertical = Input.GetAxis (this.GetComponent<PlayerControls> ().leftV);
+			Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
+			rigidbody2d.velocity = movement * speed;
 		}
-
-		rigidbody2d.position = new Vector2 (
-			Mathf.Clamp (rigidbody2d.position.x, boundary.xMin, boundary.xMax),
-			Mathf.Clamp (rigidbody2d.position.y, boundary.yMin, boundary.yMax)
-		);
 	}
 }
