@@ -10,7 +10,6 @@ public class Dash : MonoBehaviour
 	public float dashSpeed;
 	public float dashTime;
 	public float cooldown;
-	public int playerID;
 
 	private float dashEnd;
 	private float nextDash;

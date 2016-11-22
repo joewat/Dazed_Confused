@@ -4,19 +4,12 @@ using System.Collections;
 public class Aim : MonoBehaviour
 {
 
-	private Vector3 mouse_pos;
 	public Transform target;
-	private Vector3 object_pos;
-	private float angle;
-	float sensitivityX;
-	float sensitivityY;
-	public float angH;
-	public float angV;
 
 	void Update ()
 	{
-		angH = Input.GetAxis (this.GetComponent<PlayerControls> ().rightH) * -1;
-		angV = Input.GetAxis (this.GetComponent<PlayerControls> ().rightV) * -1;
+		float angH = Input.GetAxis (this.GetComponent<PlayerControls> ().rightH) * -1;
+		float angV = Input.GetAxis (this.GetComponent<PlayerControls> ().rightV) * -1;
 		if (angH != 0 || angV != 0) {
 			target.eulerAngles = new Vector3 (0, 0, ((Mathf.Atan2 (angH, angV) * (180 / Mathf.PI))));
 		}

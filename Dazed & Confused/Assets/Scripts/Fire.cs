@@ -7,7 +7,6 @@ public class Fire : MonoBehaviour
 	public GameObject bullet;
 	public Transform bulletSpawn;
 	public float fireRate;
-	public int playerID;
 
 	private float nextFire;
 

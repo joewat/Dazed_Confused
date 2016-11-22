@@ -43,9 +43,6 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update ()
 	{
-		print ("hello");
-		print (this.GetComponent<PlayerControls> ().rightH);
-
 		// Unstun after certain amount of time.
 		if (Time.time > stunEnd) {
 			stun = false;

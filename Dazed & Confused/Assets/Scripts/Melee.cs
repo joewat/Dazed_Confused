@@ -8,7 +8,6 @@ public class Melee : MonoBehaviour
 	public bool active;
 	public float activeTime;
 	public float cooldown;
-	public int playerID;
 
 	private float activeEnd;
 	private float nextActive;

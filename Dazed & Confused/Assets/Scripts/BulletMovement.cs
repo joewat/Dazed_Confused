@@ -7,7 +7,6 @@ public class BulletMovement : MonoBehaviour
 	private Rigidbody2D rigidbody2d;
 
 	public float speed;
-	public int playerID;
 
 	void Start ()
 	{
