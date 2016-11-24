@@ -27,7 +27,7 @@ public class aoeBullet : MonoBehaviour
 
     void Update() {
         // aoeBullet assignment and cooldown.
-        if (Input.GetButton("test") && Time.time > nextBullet)
+        if (Time.time > nextBullet && !expand)
         {
             expand = true;
             rigidbody2d.velocity = transform.up * 0;
@@ -35,14 +35,15 @@ public class aoeBullet : MonoBehaviour
         }
 
         // AOE Expansion
-        if (expand == true) {
+        if (expand) {
             transform.localScale = new Vector3(expandScale, expandScale, expandScale);
         }
 
         // Post Explosion
-        if (Time.time > expandEnd) {
-            expand = false;
-            Destroy(this);
+        if (expand && Time.time > expandEnd) {
+            print("hi");
+            Destroy(this.gameObject);
         }
-    }
+
+    } 
 }
