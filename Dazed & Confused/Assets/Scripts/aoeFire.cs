@@ -13,7 +13,7 @@ public class aoeFire : MonoBehaviour
     void Update()
     {
         // Fire on button press.
-        if (Input.GetButton("test") && Time.time > nextFire)
+		if (Input.GetButton (this.GetComponent<PlayerControls> ().grenade) && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
             Instantiate(aoebullet, bulletSpawn.position, bulletSpawn.rotation);

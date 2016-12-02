@@ -17,6 +17,8 @@ public class aoeBullet : MonoBehaviour
     private float nextBullet;
     private float expandEnd;
 
+	public Transform bulletPrefab;
+
 	void Start ()
 	{
 		// Initialize bullet movement speed and Timer
@@ -29,9 +31,7 @@ public class aoeBullet : MonoBehaviour
         // aoeBullet assignment and cooldown.
         if (Time.time > nextBullet && !expand)
         {
-            expand = true;
-            rigidbody2d.velocity = transform.up * 0;
-            expandEnd = Time.time + expandTime;
+			startExpand ();
         }
 
         // AOE Expansion
@@ -41,9 +41,17 @@ public class aoeBullet : MonoBehaviour
 
         // Post Explosion
         if (expand && Time.time > expandEnd) {
-            print("hi");
             Destroy(this.gameObject);
         }
-
     } 
+
+	public void startExpand() {
+		expand = true;
+		rigidbody2d.constraints = RigidbodyConstraints2D.FreezePosition;
+		rigidbody2d.velocity = transform.up * 0;
+		expandEnd = Time.time + expandTime;
+//		GetComponent<CircleCollider2D> ().enabled = false;
+//		Transform bullet = Instantiate(bulletPrefab) as Transform;
+//		Physics2D.IgnoreCollision(bullet.GetComponent<CircleCollider2D>(), GetComponent<CircleCollider2D>());
+	}
 }
