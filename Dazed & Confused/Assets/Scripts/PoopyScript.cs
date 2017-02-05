@@ -6,11 +6,7 @@ public class PoopyScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		print("hi");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }
