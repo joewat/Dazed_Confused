@@ -27,6 +27,7 @@ public class Dash : MonoBehaviour
 			dash = true;
 			dashEnd = Time.time + dashTime;
 			nextDash = Time.time + cooldown;
+			this.gameObject.GetComponent<PlayerSFX> ().Play_dash ();
 		}
 
 		// Dashing state.

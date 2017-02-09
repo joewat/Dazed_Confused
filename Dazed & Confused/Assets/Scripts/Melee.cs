@@ -22,7 +22,7 @@ public class Melee : MonoBehaviour
 	{
 
 		// Activate melee on button press.
-		if (Input.GetButton (this.GetComponent<PlayerControls> ().melee) && Time.time > nextActive) {
+		if (Input.GetAxis (this.GetComponent<PlayerControls> ().melee) > 0 && Time.time > nextActive) { 
 			active = true;
 			activeEnd = Time.time + activeTime;
 			nextActive = Time.time + cooldown;
