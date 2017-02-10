@@ -15,19 +15,16 @@ public class BulletMovement : MonoBehaviour
 		rigidbody2d.velocity = transform.up * speed;	
 	}
 
-//	public void OnCollisionEnter2D(Collision2D coll) {
-//		Debug.Log ("1");
-//
-//		if (coll.gameObject.CompareTag("Projectile")) {
-//			Debug.Log ("2");
-//
-//			if (coll.gameObject.comp
-//				GetComponent<aoeBullet>().expand == true) {
-//				Debug.Log ("3");
-//
-//				Physics2D.IgnoreCollision (GetComponent<Collider2D> (), coll.gameObject.GetComponent<Collider2D>());
-//			}
-//		}
-//	}
+	public void OnTriggerEnter2D(Collider2D coll) {
 
+		switch (coll.gameObject.layer) {
+		case 8: // Player Layer
+			coll.gameObject.GetComponent<PlayerMovement> ().startStun ();
+			Destroy (this.gameObject);
+			break;
+		case 10: // Wall Layer
+			Destroy (this.gameObject);
+			break;
+		}
+	}
 }

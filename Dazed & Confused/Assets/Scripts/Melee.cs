@@ -22,7 +22,7 @@ public class Melee : MonoBehaviour
 	{
 
 		// Activate melee on button press.
-		if (Input.GetAxis (this.GetComponent<PlayerControls> ().melee) > 0 && Time.time > nextActive) { 
+		if (Input.GetAxis (this.GetComponent<PlayerControls> ().melee) > 0 && Time.time > nextActive) {
 			active = true;
 			activeEnd = Time.time + activeTime;
 			nextActive = Time.time + cooldown;
@@ -39,5 +39,14 @@ public class Melee : MonoBehaviour
 			active = false;
 		}
 	}
+
+	void OnTriggerEnter2D (Collider2D coll) {
+		if (coll.gameObject.layer == 8) {
+			if (coll.gameObject.GetComponent<PlayerMovement> ().stun) {
+				Destroy (coll.gameObject);
+			}
+		}
+	}
+
 
 }

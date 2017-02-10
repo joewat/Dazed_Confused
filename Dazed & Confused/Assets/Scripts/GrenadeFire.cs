@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class aoeFire : MonoBehaviour
+public class GrenadeFire : MonoBehaviour
 {
 
-    public GameObject aoebullet;
+    public GameObject grenade;
     public Transform bulletSpawn;
     public float fireRate;
 
@@ -16,7 +16,7 @@ public class aoeFire : MonoBehaviour
 		if (Input.GetButton (this.GetComponent<PlayerControls> ().grenade) && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            Instantiate(aoebullet, bulletSpawn.position, bulletSpawn.rotation);
+            Instantiate(grenade, bulletSpawn.position, bulletSpawn.rotation);
         }
     }
 }
