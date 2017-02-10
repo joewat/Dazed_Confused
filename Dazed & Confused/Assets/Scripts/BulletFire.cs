@@ -16,6 +16,7 @@ public class BulletFire : MonoBehaviour
 		if (Input.GetAxis (this.GetComponent<PlayerControls> ().shoot) > 0 && Time.time > nextFire) {
 			nextFire = Time.time + fireRate;
 			Instantiate (bullet, bulletSpawn.position, bulletSpawn.rotation);
+			this.gameObject.GetComponent<PlayerSFX> ().Play_fire ();
 		}
 	}
 }

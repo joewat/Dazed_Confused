@@ -22,17 +22,24 @@ public class Dash : MonoBehaviour
 
 	void Update ()
 	{
+		float moveHorizontal = Input.GetAxis (this.GetComponent<PlayerControls> ().leftH);
+		float moveVertical = Input.GetAxis (this.GetComponent<PlayerControls> ().leftV);
+		moveHorizontal = moveHorizontal > 0 ? 1 : moveHorizontal < 0 ? -1 : 0;
+		moveVertical = moveVertical > 0 ? 1 : moveVertical < 0 ? -1 : 0;
+		Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
+
 		// Dash assignment and cooldown.
-		if (Input.GetButton (this.GetComponent<PlayerControls> ().dash) && Time.time > nextDash) {
+		if (Input.GetButton (this.GetComponent<PlayerControls> ().dash) && (moveHorizontal != 0 || moveVertical != 0) && Time.time > nextDash && !this.gameObject.GetComponent<PlayerMovement> ().stun) {
 			dash = true;
 			dashEnd = Time.time + dashTime;
 			nextDash = Time.time + cooldown;
 			this.gameObject.GetComponent<PlayerSFX> ().Play_dash ();
+			rigidbody2d.AddForce (movement * dashSpeed);
 		}
 
 		// Dashing state.
 		if (dash == true) {
-			rigidbody2d.AddForce (rigidbody2d.velocity * dashSpeed);
+			
 		}
 
 		// Set dash to inactive after certain amount of time.
