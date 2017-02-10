@@ -40,4 +40,13 @@ public class Melee : MonoBehaviour
 		}
 	}
 
+	void OnTriggerEnter2D (Collider2D coll) {
+		if (coll.gameObject.layer == 8) {
+			if (coll.gameObject.GetComponent<PlayerMovement> ().stun) {
+				Destroy (coll.gameObject);
+			}
+		}
+	}
+
+
 }

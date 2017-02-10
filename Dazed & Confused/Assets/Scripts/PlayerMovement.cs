@@ -21,32 +21,6 @@ public class PlayerMovement : MonoBehaviour
 		rigidbody2d.freezeRotation = true;
 	}
 
-	void OnCollisionEnter2D (Collision2D coll)
-	{
-		// Loop through all the collisions that happened.
-		foreach (ContactPoint2D c in coll.contacts) {
-
-			// If collided with bullet, then stun.
-			if (c.collider.tag == "Projectile") {
-				if (c.collider.name == "Bullet(Clone)") {
-					Destroy (coll.gameObject);
-				} else {
-					print ("hello");
-					coll.gameObject.GetComponent<aoeBullet> ().startExpand ();
-				}
-				if (!stun) {
-					stun = true;
-					stunEnd = Time.time + stunTime;
-				}
-			}
-
-			// If collided with melee, then destroy.
-			if (c.collider.name == "Melee" && stun == true) {
-				Destroy (this.gameObject);
-			}
-		}
-	}
-
 	void Update ()
 	{
 		// Unstun after certain amount of time.
@@ -62,6 +36,13 @@ public class PlayerMovement : MonoBehaviour
 			rigidbody2d.velocity = movement * speed;
 		} else {
 			rigidbody2d.velocity = new Vector2 (0, 0);
+		}
+	}
+
+	public void startStun() {
+		if (!stun) {
+			stun = true;
+			stunEnd = Time.time + stunTime;
 		}
 	}
 }
