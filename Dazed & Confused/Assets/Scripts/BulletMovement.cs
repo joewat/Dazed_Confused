@@ -11,20 +11,23 @@ public class BulletMovement : MonoBehaviour
 	void Start ()
 	{
 		// Initialize bullet movement speed.
-		rigidbody2d = GetComponent<Rigidbody2D> ();
-		rigidbody2d.velocity = transform.up * speed;	
+		this.rigidbody2d = GetComponent<Rigidbody2D> ();
+		this.rigidbody2d.velocity = transform.up * this.speed;	
 	}
 
-	public void OnTriggerEnter2D(Collider2D coll) {
+	public void OnTriggerEnter2D (Collider2D coll)
+	{
+		// Get collided game object.
+		GameObject go = coll.gameObject;
 
-		switch (coll.gameObject.layer) {
-		case 8: // Player Layer
-			coll.gameObject.GetComponent<PlayerMovement> ().startStun ();
+		// Check tag of collided object.
+		if (go.tag == "Player") {
+			if (!go.GetComponent<PlayerMovement> ().IsInvincible ()) {
+				go.GetComponent<PlayerMovement> ().StartStun (2);
+			}
 			Destroy (this.gameObject);
-			break;
-		case 10: // Wall Layer
+		} else if (go.tag == "Wall") {
 			Destroy (this.gameObject);
-			break;
 		}
 	}
 }

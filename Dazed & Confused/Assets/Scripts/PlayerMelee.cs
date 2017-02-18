@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Melee : MonoBehaviour
+public class PlayerMelee : MonoBehaviour
 {
 	
 	public GameObject melee;
@@ -41,9 +41,9 @@ public class Melee : MonoBehaviour
 	}
 
 	void OnTriggerEnter2D (Collider2D coll) {
-		if (coll.gameObject.layer == 8) {
-			if (coll.gameObject.GetComponent<PlayerMovement> ().stun) {
-				Destroy (coll.gameObject);
+		if (coll.gameObject.layer == 8) { // Player layer
+			if (coll.gameObject.GetComponent<PlayerMovement> ().IsStunned()) {
+				coll.gameObject.GetComponent<PlayerRespawn> ().Respawn ();
 			}
 		}
 	}

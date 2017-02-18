@@ -12,11 +12,14 @@ public class BulletFire : MonoBehaviour
 
 	void Update ()
 	{
+		// Update timer.
+		this.nextFire -= Time.deltaTime;
+
 		// Fire on button press.
-		if (Input.GetAxis (this.GetComponent<PlayerControls> ().shoot) > 0 && Time.time > nextFire) {
-			nextFire = Time.time + fireRate;
-			Instantiate (bullet, bulletSpawn.position, bulletSpawn.rotation);
-			this.gameObject.GetComponent<PlayerSFX> ().Play_fire ();
+		if (Input.GetAxis (this.GetComponent<PlayerControls> ().shoot) > 0 && nextFire < 0) {
+			this.nextFire = this.fireRate;
+			Instantiate (this.bullet, this.bulletSpawn.position, this.bulletSpawn.rotation);
+			this.GetComponent<PlayerSFX> ().PlayFire ();
 		}
 	}
 }

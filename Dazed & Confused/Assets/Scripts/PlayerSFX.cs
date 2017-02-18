@@ -13,11 +13,11 @@ public class PlayerSFX : MonoBehaviour {
 		audio = GetComponent<AudioSource> ();
 	}
 
-	public void Play_fire () {
+	public void PlayFire () {
 		audio.PlayOneShot (Placeholder_Gunfire, 1f);
 	}
 
-	public void Play_dash () {
+	public void PlayDash () {
 		audio.PlayOneShot (Placeholder_Dash, 1f);
 	}
 }
