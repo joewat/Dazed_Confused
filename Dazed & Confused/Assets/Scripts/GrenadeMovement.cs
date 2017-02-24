@@ -7,64 +7,49 @@ public class GrenadeMovement : MonoBehaviour
 	private Rigidbody2D rigidbody2d;
 
 	public float speed;
-	public int playerID;
-
-	public float cooldown;
-	public bool expand;
+	public float waitTime;
 	public float expandTime;
 	public float expandScale;
 
-	private float nextBullet;
-	private float expandEnd;
-
-	public Transform bulletPrefab;
+	public Transform grenadePrefab;
 
 	void Start ()
 	{
 		// Initialize bullet movement speed and Timer
-		rigidbody2d = GetComponent<Rigidbody2D> ();
-		rigidbody2d.velocity = transform.up * speed;
-		nextBullet = Time.time + cooldown;
+		this.rigidbody2d = GetComponent<Rigidbody2D> ();
+		this.rigidbody2d.velocity = transform.up * this.speed;
 	}
 
 	void Update ()
 	{
-		// aoeBullet assignment and cooldown.
-		if (Time.time > nextBullet && !expand) {
-			startExpand ();
-		}
+		// UpdateTimer
+		this.waitTime -= Time.deltaTime;
 
-		// AOE Expansion
-		if (expand) {
+		// Start expanding after waiting.
+		if (this.waitTime < 0) {
+			this.rigidbody2d.constraints = RigidbodyConstraints2D.FreezePosition;
+			this.rigidbody2d.velocity = transform.up * 0;
+			this.expandTime -= Time.deltaTime;
 			transform.localScale = new Vector3 (expandScale, expandScale, expandScale);
 		}
 
-		// Post Explosion
-		if (expand && Time.time > expandEnd) {
+		// Destroy after expanding.
+		if (this.expandTime < 0) {
 			Destroy (this.gameObject);
 		}
 	}
 
 	public void OnTriggerEnter2D (Collider2D coll)
 	{
+		// Get collided game object.
+		GameObject go = coll.gameObject;
 
-		switch (coll.gameObject.layer) {
-		case 8: // Player Layer
-			coll.gameObject.GetComponent<PlayerMovement> ().startStun ();
-			startExpand ();
-			break;
-		case 10: // Wall Layer
-			rigidbody2d.velocity = transform.up * 0;
-			break;
+		// Check tag of collided object.
+		if (go.tag == "Player") {
+			go.GetComponent<PlayerMovement> ().StartStun (4);
+			this.waitTime = 0;
+		} else if (go.tag == "Wall") {
+			this.rigidbody2d.velocity = transform.up * 0;
 		}
-
-	}
-
-	public void startExpand ()
-	{
-		expand = true;
-		rigidbody2d.constraints = RigidbodyConstraints2D.FreezePosition;
-		rigidbody2d.velocity = transform.up * 0;
-		expandEnd = Time.time + expandTime;
 	}
 }

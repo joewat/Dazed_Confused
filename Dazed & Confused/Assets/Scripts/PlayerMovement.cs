@@ -8,41 +8,53 @@ public class PlayerMovement : MonoBehaviour
 
 	public float speed;
 
-	public bool stun;
-	public float stunTime;
-
-	private float stunEnd;
+	private float stunned;
+	private float invincible;
 
 	void Start ()
 	{
-		// Initialize variables.
-		stun = false;
-		rigidbody2d = GetComponent<Rigidbody2D> ();
-		rigidbody2d.freezeRotation = true;
+		// Freeze rotation caused by physics.
+		this.rigidbody2d = GetComponent<Rigidbody2D> ();
+		this.rigidbody2d.freezeRotation = true;
 	}
 
 	void Update ()
 	{
-		// Unstun after certain amount of time.
-		if (Time.time > stunEnd) {
-			stun = false;
-		}
+		// Update timers.
+		this.stunned -= Time.deltaTime;
+		this.invincible -= Time.deltaTime;
 
-		// Movement stuff (only if not stunned!)
-		if (!stun) {
+		// Move player only if not stunned.
+		if (!this.IsStunned()) {
 			float moveHorizontal = Input.GetAxis (this.GetComponent<PlayerControls> ().leftH);
 			float moveVertical = Input.GetAxis (this.GetComponent<PlayerControls> ().leftV);
 			Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
-			rigidbody2d.velocity = movement * speed;
+			this.rigidbody2d.velocity = movement * speed;
 		} else {
-			rigidbody2d.velocity = new Vector2 (0, 0);
+			this.rigidbody2d.velocity = new Vector2 (0, 0);
+		}
+
+		// Start invincibility.
+		if (this.stunned < 0 && this.stunned + Time.deltaTime > 0) {
+			StartInvincible (1);
+		}
+	}
+		
+	public void StartStun( int seconds ) {
+		if (!this.IsStunned() && !this.IsInvincible()) {
+			this.stunned = seconds;
 		}
 	}
 
-	public void startStun() {
-		if (!stun) {
-			stun = true;
-			stunEnd = Time.time + stunTime;
-		}
+	public bool IsStunned() {
+		return this.stunned > 0;
+	}
+
+	public void StartInvincible( int seconds) {
+		this.invincible = seconds;
+	}
+
+	public bool IsInvincible() {
+		return this.invincible > 0;
 	}
 }
