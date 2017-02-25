@@ -41,9 +41,14 @@ public class PlayerMelee : MonoBehaviour
 	}
 
 	void OnTriggerEnter2D (Collider2D coll) {
-		if (coll.gameObject.tag == "Player") {
-			if (coll.gameObject.GetComponent<PlayerMovement> ().IsStunned()) {
-				coll.gameObject.GetComponent<PlayerRespawn> ().Respawn ();
+		// Get collided game object.
+		GameObject go = coll.gameObject;
+
+		// Check tag of collided object.
+		if (go.tag == "Player") {
+			if (go.GetComponent<PlayerMovement> ().IsStunned()) {
+				go.GetComponent<PlayerRespawn> ().Respawn ();
+				this.gameObject.GetComponent<PlayerData> ().incrementScore();
 			}
 		}
 	}
