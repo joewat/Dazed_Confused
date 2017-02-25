@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 		
-	public void StartStun( int seconds ) {
+	public void StartStun(int seconds) {
 		if (!this.IsStunned() && !this.IsInvincible()) {
 			this.stunned = seconds;
 		}
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 		return this.stunned > 0;
 	}
 
-	public void StartInvincible( int seconds) {
+	public void StartInvincible(int seconds) {
 		this.invincible = seconds;
 	}
 

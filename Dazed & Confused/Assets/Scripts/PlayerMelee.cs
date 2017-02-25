@@ -41,7 +41,7 @@ public class PlayerMelee : MonoBehaviour
 	}
 
 	void OnTriggerEnter2D (Collider2D coll) {
-		if (coll.gameObject.layer == 8) { // Player layer
+		if (coll.gameObject.tag == "Player") {
 			if (coll.gameObject.GetComponent<PlayerMovement> ().IsStunned()) {
 				coll.gameObject.GetComponent<PlayerRespawn> ().Respawn ();
 			}
