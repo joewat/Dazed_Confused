@@ -13,12 +13,12 @@ public class Respawn : MonoBehaviour {
 		death = false;
 		Player = GameObject.FindGameObjectWithTag ("Player");
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (Player == null && death == false) {
 			death = true;
-			Instantiate (playerPrefab, Vector3(-8,3,0), 0f);
+			Instantiate (playerPrefab, new Vector3(-8,3,0), Quaternion.Euler(new Vector3(0, 0, 0)));
 		}
 	}
 }

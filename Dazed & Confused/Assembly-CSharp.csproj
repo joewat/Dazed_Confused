@@ -3,9 +3,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
     <ProjectGuid>{B374129C-05DB-EB7E-12C4-487F8061E130}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -34,29 +33,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEditor.dll</HintPath>
+      <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Managed\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BulletFire.cs" />
-     <Compile Include="Assets\Scripts\BulletMovement.cs" />
-     <Compile Include="Assets\Scripts\GrenadeFire.cs" />
-     <Compile Include="Assets\Scripts\GrenadeMovement.cs" />
-     <Compile Include="Assets\Scripts\PlayerAim.cs" />
-     <Compile Include="Assets\Scripts\PlayerControls.cs" />
-     <Compile Include="Assets\Scripts\PlayerDash.cs" />
-     <Compile Include="Assets\Scripts\PlayerMelee.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\PlayerRespawn.cs" />
-     <Compile Include="Assets\Scripts\PlayerSFX.cs" />
+    <Compile Include="Assets\Scripts\BulletFire.cs" />
+    <Compile Include="Assets\Scripts\BulletMovement.cs" />
+    <Compile Include="Assets\Scripts\GrenadeFire.cs" />
+    <Compile Include="Assets\Scripts\GrenadeMovement.cs" />
+    <Compile Include="Assets\Scripts\PlayerAim.cs" />
+    <Compile Include="Assets\Scripts\PlayerControls.cs" />
+    <Compile Include="Assets\Scripts\PlayerDash.cs" />
+    <Compile Include="Assets\Scripts\PlayerMelee.cs" />
+    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PlayerRespawn.cs" />
+    <Compile Include="Assets\Scripts\PlayerSFX.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -66,5 +65,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
 </Project>
