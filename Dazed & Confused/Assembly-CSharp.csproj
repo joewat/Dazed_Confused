@@ -48,11 +48,13 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BulletFire.cs" />
      <Compile Include="Assets\Scripts\BulletMovement.cs" />
+     <Compile Include="Assets\Scripts\GameUI.cs" />
      <Compile Include="Assets\Scripts\GrenadeFire.cs" />
      <Compile Include="Assets\Scripts\GrenadeMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerAim.cs" />
      <Compile Include="Assets\Scripts\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\PlayerDash.cs" />
+     <Compile Include="Assets\Scripts\PlayerData.cs" />
      <Compile Include="Assets\Scripts\PlayerMelee.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerRespawn.cs" />
