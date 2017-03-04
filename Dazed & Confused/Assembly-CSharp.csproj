@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BulletFire.cs" />
      <Compile Include="Assets\Scripts\BulletMovement.cs" />
+     <Compile Include="Assets\Scripts\GameUI.cs" />
      <Compile Include="Assets\Scripts\GrenadeFire.cs" />
      <Compile Include="Assets\Scripts\GrenadeMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerAim.cs" />
