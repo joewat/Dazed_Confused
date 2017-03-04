@@ -16,7 +16,7 @@ public class GrenadeFire : MonoBehaviour
 		this.nextFire -= Time.deltaTime;
 
 		// Fire on button press.
-		if (Input.GetButton (this.GetComponent<PlayerControls> ().special) && nextFire < 0) {
+		if (Input.GetButton (this.GetComponent<PlayerControls> ().special) && nextFire < 0 && !this.GetComponent<PlayerMovement>().IsStunned()) {
 			this.nextFire = this.fireRate;
 			Instantiate (grenade, bulletSpawn.position, bulletSpawn.rotation);
 		}
