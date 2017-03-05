@@ -8,9 +8,12 @@ public class GameUI : MonoBehaviour {
 	private float time;
 	public float initialTime;
 
+	public GameObject gameOverUI;
+
 	// Use this for initialization
 	void Start () {
 		this.time = initialTime;
+		gameOverUI.SetActive (false);
 	}
 
 	void Update () {
@@ -25,9 +28,14 @@ public class GameUI : MonoBehaviour {
 
 
 		if (this.time < 0) {
-			this.time = initialTime;
-			GameObject.Find ("Player (1)").GetComponent<PlayerData> ().score = 0;
-			GameObject.Find ("Player (2)").GetComponent<PlayerData> ().score = 0;
+			this.GameOver ();
+//			this.time = initialTime;
+//			GameObject.Find ("Player (1)").GetComponent<PlayerData> ().score = 0;
+//			GameObject.Find ("Player (2)").GetComponent<PlayerData> ().score = 0;
 		}
+	}
+
+	private void GameOver() {
+		gameOverUI.SetActive (true);
 	}
 }
