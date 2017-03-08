@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{FB101FCA-C8B8-CD13-733A-944AB46BAE51}") = "Dazed & Confused", "Assembly-CSharp.csproj", "{B374129C-05DB-EB7E-12C4-487F8061E130}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dazed & Confused", "Assembly-CSharp.csproj", "{B374129C-05DB-EB7E-12C4-487F8061E130}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
