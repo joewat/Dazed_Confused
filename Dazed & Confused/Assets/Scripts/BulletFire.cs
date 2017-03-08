@@ -16,7 +16,7 @@ public class BulletFire : MonoBehaviour
 		this.nextFire -= Time.deltaTime;
 
 		// Fire on button press.
-		if (Input.GetAxis (this.GetComponent<PlayerControls> ().shoot) > 0 && nextFire < 0) {
+		if (Input.GetAxis (this.GetComponent<PlayerControls> ().shoot) > 0 && nextFire < 0 && !this.GetComponent<PlayerMovement>().IsStunned()) {
 			this.nextFire = this.fireRate;
 			Instantiate (this.bullet, this.bulletSpawn.position, this.bulletSpawn.rotation);
 			this.GetComponent<PlayerSFX> ().PlayFire ();

@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 			float moveVertical = Input.GetAxis (this.GetComponent<PlayerControls> ().leftV);
 			Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 			this.rigidbody2d.velocity = movement * speed;
+			this.GetComponent<Animator> ().SetFloat ("walkSpeed", (movement.x + movement.y) * 5);
 		} else {
 			this.rigidbody2d.velocity = new Vector2 (0, 0);
 		}

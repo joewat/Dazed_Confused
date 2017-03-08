@@ -22,7 +22,7 @@ public class PlayerMelee : MonoBehaviour
 	{
 
 		// Activate melee on button press.
-		if (Input.GetAxis (this.GetComponent<PlayerControls> ().melee) > 0 && Time.time > nextActive) {
+		if (Input.GetAxis (this.GetComponent<PlayerControls> ().melee) > 0 && Time.time > nextActive && !this.GetComponent<PlayerMovement>().IsStunned()) {
 			active = true;
 			activeEnd = Time.time + activeTime;
 			nextActive = Time.time + cooldown;
@@ -41,9 +41,14 @@ public class PlayerMelee : MonoBehaviour
 	}
 
 	void OnTriggerEnter2D (Collider2D coll) {
-		if (coll.gameObject.tag == "Player") {
-			if (coll.gameObject.GetComponent<PlayerMovement> ().IsStunned()) {
-				coll.gameObject.GetComponent<PlayerRespawn> ().Respawn ();
+		// Get collided game object.
+		GameObject go = coll.gameObject;
+
+		// Check tag of collided object.
+		if (go.tag == "Player") {
+			if (go.GetComponent<PlayerMovement> ().IsStunned()) {
+				go.GetComponent<PlayerRespawn> ().Respawn ();
+				this.gameObject.GetComponent<PlayerData> ().incrementScore();
 			}
 		}
 	}
