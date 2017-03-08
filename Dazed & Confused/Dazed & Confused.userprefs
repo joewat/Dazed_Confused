@@ -1,11 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameUI.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MusicTitle.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerSFX.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/PlayerMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MenuNavigation.cs" Line="20" Column="3" />
-      <File FileName="Assets/Scripts/GameUI.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/DayNightCycle.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/MusicTitle.cs" Line="12" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

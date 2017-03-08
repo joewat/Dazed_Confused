@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\GrenadeFire.cs" />
      <Compile Include="Assets\Scripts\GrenadeMovement.cs" />
      <Compile Include="Assets\Scripts\MenuNavigation.cs" />
+     <Compile Include="Assets\Scripts\MusicTitle.cs" />
      <Compile Include="Assets\Scripts\PlayerAim.cs" />
      <Compile Include="Assets\Scripts\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\PlayerDash.cs" />
