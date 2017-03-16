@@ -22,8 +22,12 @@ public class GrenadeMovement : MonoBehaviour
 
 	void Update ()
 	{
-		// UpdateTimer
+		// Update timer
 		this.waitTime -= Time.deltaTime;
+
+		// Update speed
+		this.speed = this.speed > 0 ? this.speed-4 : 0;
+		this.rigidbody2d.velocity = transform.up * this.speed;
 
 		// Start expanding after waiting.
 		if (this.waitTime < 0) {
@@ -49,7 +53,7 @@ public class GrenadeMovement : MonoBehaviour
 			go.GetComponent<PlayerMovement> ().StartStun (4);
 			this.waitTime = 0;
 		} else if (go.tag == "Wall") {
-			this.rigidbody2d.velocity = transform.up * 0;
+			this.speed = 0;
 		}
 	}
 }
