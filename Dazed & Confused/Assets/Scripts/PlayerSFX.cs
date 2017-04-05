@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerSFX : MonoBehaviour {
 
-	public AudioClip Placeholder_Gunfire;
-	public AudioClip Placeholder_Dash;
+	public AudioClip Fire;
+	public AudioClip Dash;
+	public AudioClip MeleeMiss;
+	public AudioClip MeleeHit;
+	public AudioClip Footsteps;
 	AudioSource audio;
 
 
@@ -14,10 +17,22 @@ public class PlayerSFX : MonoBehaviour {
 	}
 
 	public void PlayFire () {
-		audio.PlayOneShot (Placeholder_Gunfire, 1f);
+		audio.PlayOneShot (Fire, 1f);
 	}
 
 	public void PlayDash () {
-		audio.PlayOneShot (Placeholder_Dash, 1f);
+		audio.PlayOneShot (Dash, 1f);
+	}
+
+	public void PlayMeleeMiss () {
+		audio.PlayOneShot (MeleeMiss, 1f);
+	}
+
+	public void PlayMeleeHit () {
+		audio.PlayOneShot (MeleeHit, 1f);
+	}
+
+	public void PlayFootsteps () {
+		audio.PlayOneShot (Footsteps, 5f);
 	}
 }
