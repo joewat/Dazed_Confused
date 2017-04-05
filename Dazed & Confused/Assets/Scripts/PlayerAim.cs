@@ -16,7 +16,7 @@ public class PlayerAim : MonoBehaviour
 	{
 		float angH = Input.GetAxis (this.GetComponent<PlayerControls> ().rightH) * -1;
 		float angV = Input.GetAxis (this.GetComponent<PlayerControls> ().rightV) * -1;
-		if ((angH != 0 || angV != 0) && !this.GetComponent<PlayerMovement>().IsStunned()) {
+		if ((angH != 0 || angV != 0)) {
 			this.target.eulerAngles = new Vector3 (0, 0, ((Mathf.Atan2 (angH, angV) * (180 / Mathf.PI))));
 		}
 			

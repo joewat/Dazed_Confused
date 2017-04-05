@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private float stunned;
 	private float invincible;
+	private float walking;
 
 	void Start ()
 	{
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 		// Update timers.
 		this.stunned -= Time.deltaTime;
 		this.invincible -= Time.deltaTime;
+		this.walking -= Time.deltaTime;
 
 		// Move player only if not stunned.
 		if (!this.IsStunned()) {
@@ -31,6 +33,11 @@ public class PlayerMovement : MonoBehaviour
 			Vector2 movement = new Vector2 (moveHorizontal, moveVertical);
 			this.rigidbody2d.velocity = movement * speed;
 			this.GetComponent<Animator> ().SetFloat ("walkSpeed", (movement.x + movement.y) * 5);
+			if (Mathf.Abs((movement.x + movement.y) * 5) > 0 && this.walking < 0) {
+				this.GetComponent<PlayerSFX> ().PlayFootsteps ();
+				walking = (2 - Mathf.Abs(movement.x + movement.y)) * 0.2f;
+				print (walking);
+			}
 		} else {
 			this.rigidbody2d.velocity = new Vector2 (0, 0);
 		}
@@ -56,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
 	}
 		
-	public void StartStun(int seconds) {
+	public void StartStun(float seconds) {
 		if (!this.IsStunned() && !this.IsInvincible()) {
 			this.stunned = seconds;
 		}
@@ -66,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
 		return this.stunned > 0;
 	}
 
-	public void StartInvincible(int seconds) {
+	public void StartInvincible(float seconds) {
 		this.stunned = 0;
 		this.invincible = seconds;
 	}

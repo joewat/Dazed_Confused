@@ -10,10 +10,15 @@ public class GameUI : MonoBehaviour {
 
 	public GameObject gameOverUI;
 
+	public AudioClip bgm;
+	AudioSource audio;
+
 	// Use this for initialization
 	void Start () {
 		this.time = initialTime;
 		gameOverUI.SetActive (false);
+		audio = GetComponent<AudioSource> ();
+		audio.PlayOneShot (bgm, 1f);
 	}
 
 	void Update () {
